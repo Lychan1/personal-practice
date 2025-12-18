@@ -1,0 +1,670 @@
+/* 顶部广告start */
+.header {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    /* 图片本身大小大于容器，将多余部分隐藏 */
+    display: flex;
+    justify-content: center;
+}
+
+.header img {
+    height: 120px;
+}
+
+/* 图片太大 设置其高度与盒子一样 然后将多余部分影藏 
+水平居中 实现完整展示图片主要部分的效果*/
+
+/* 顶部广告 end*/
+/* 黑色导航start */
+.blacknav {
+    background-color: #333333;
+    width: 100%;
+    height: 40px;
+}
+
+.blacknav .middle {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* 两个盒子设置居中效果 */
+.blacknav .middle li {
+    float: left;
+    line-height: 40px;
+    /* 设置行高实现垂直居中 */
+    font-size: 12px;
+    position: relative;
+    /* 子绝父相 */
+}
+
+.blacknav .middle .left {
+    float: left;
+}
+
+.blacknav .middle .right {
+    float: right;
+}
+
+.blacknav .middle a {
+    color: white;
+}
+
+.blacknav .middle li span {
+    color: #424242;
+    margin: 0 3.6px;
+}
+
+.download {
+    width: 120px;
+    height: 130px;
+    background-color: #fff;
+    position: absolute;
+    /* 子元素将父元素撑开 用绝对定位让他脱流 */
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 设置水平居中为左边线对齐中线 相当于超出百分之五十
+    向左移百分之五十即可实现真正水平居中 */
+    box-shadow: 0 1px 5px #aaa;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.download img {
+    width: 90px;
+    height: 90px;
+    margin: 10px auto 0;
+}
+
+li:hover .download {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+}
+
+.download p {
+    margin-top: -10px;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.stri {
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    /* 做三角形 设置宽度高度均为0 的盒子 然后设置边框 
+    小技巧为朝上的箭头即左右透明 下面设置想要的颜色 */
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.car {
+    background-color: #424242;
+    position: relative;
+}
+
+.clist {
+    width: 320px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    font-size: 14px;
+    line-height: 100px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px gray;
+}
+
+.car:hover .clist {
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+}
+
+.car:hover .arrow {
+    opacity: 1;
+    visibility: visible;
+}
+
+.car:hover .cart {
+    color: orange;
+}
+
+.cart {
+    padding: 0 10px;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.left li:hover a {
+    color: orange;
+}
+
+.right li:hover a {
+    color: orange;
+}
+
+.cart i {
+    padding-right: 10px;
+}
+
+/* 黑色导航 end */
+/* 白色导购start */
+.whitenav {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    position: relative;
+}
+
+.whitemiddle {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: #ff6700;
+    float: left;
+    margin-top: 25px;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    /* 避免还未显示的图片被鼠标识别到 */
+}
+
+.gif {
+    width: 100px;
+    height: 50px;
+    float: left;
+    padding-left: 40px;
+    margin-right: 40px;
+    margin-top: 25px;
+}
+
+.whitemiddle li {
+    float: left;
+    padding-left: 25px;
+    line-height: 100px;
+    font-size: 16px;
+}
+
+.whitemiddle li a {
+    color: #000;
+}
+
+.search {
+    width: 304px;
+    height: 40px;
+    float: right;
+    margin-top: 25px;
+    border: 1px solid #e0e0e0;
+}
+
+.search input {
+    width: 250px;
+    height: 100%;
+    padding-left: 10px;
+    float: left;
+    border: none;
+    outline: none;
+    /* 去除获得焦点的时候默认出现的高亮边框
+    更美观 */
+    box-sizing: border-box;
+}
+
+.search .icon {
+    width: 40px;
+    height: 100%;
+    float: right;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    font-size: 18px;
+}
+
+.whitemiddle li a:hover {
+    color: #ff6700;
+}
+
+.logo img {
+    transition: all 0.3s;
+}
+
+.mi-logo {
+    position: absolute;
+    left: 0;
+}
+
+.mi-home {
+    position: absolute;
+    right: -50px;
+}
+
+.logo:hover .mi-home {
+    right: 0;
+}
+
+.logo:hover .mi-logo {
+    left: -50px;
+}
+
+.search button:hover {
+    background-color: #ff6700;
+}
+
+/* 尽量避免同时使用float 和flex造成布局混乱
+当使用float 需要调整具体位置的时候通过padding或者margin */
+
+
+.phonelist {
+    width: 100vw;
+    height: 230px;
+    position: absolute;
+    left: 50%;
+    margin-left: -50vw;
+    top: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px gray;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.phone .phonelist li {
+    float: left;
+    margin-top: 50px;
+}
+
+.phonemiddle {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.phonelist p {
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+}
+
+.money {
+    margin-top: 10px;
+}
+
+.name {
+    margin-top: -30px;
+}
+
+.phone a:hover+.phonelist {
+    opacity: 1;
+    visibility: visible;
+}
+
+.phonelist li {
+    border-right: 1px solid #eeeeee;
+
+}
+
+
+/* 白色导航end */
+/* bannerstart */
+.banner {
+    width: 1200px;
+    height: 460px;
+    margin: 0 auto;
+}
+
+.banleft {
+    width: 230px;
+    height: 100%;
+    border: none;
+    background-color: #96939f;
+    float: left;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.banright img {
+    width: 970px;
+    height: 460px;
+    float: right;
+}
+
+.banleft li {
+    line-height: 42px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.banner li:hover {
+    background-color: #ff6700;
+}
+
+.banleft i {
+    float: right;
+    padding-right: 20px;
+    line-height: 42px;
+}
+
+.banleft a {
+    color: #fff;
+}
+
+.ban {
+    position: relative;
+}
+
+
+/* 右侧展开的商品列表 */
+.banlist {
+    width: 970px;
+    height: 420px;
+    background-color: #fff;
+    position: absolute;
+    left: 100%;
+    top: -20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    display: flex;
+    align-items: start;
+}
+
+.ban:hover .banlist {
+    opacity: 1;
+    visibility: visible;
+}
+
+.banlist a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 15px;
+    /* 图片和文字之间的间距 */
+}
+
+.banlist a img {
+    width: 50px;
+}
+
+.banlist a span {
+    font-size: 14px;
+    color: #333;
+}
+
+.banlist a span:hover {
+    color: orange;
+}
+
+/* bannerend */
+/* ad start */
+.admid {
+    width: 1200px;
+    height: 170px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.admid img {
+    width: 312px;
+}
+
+.card img {
+    width: 40px;
+}
+
+.card a {
+    color: #eeeeee;
+    float: left;
+    font-size: 10px;
+    justify-content: space-between;
+}
+
+.card {
+    width: 230px;
+    height: 167px;
+    background-color: #5f5750;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    /* grid语法 */
+    gap: 10px;
+}
+
+.card ul {
+    display: contents;
+    /* 要让li以grid布局排列 display: contents 会让 <ul> 自己消失，
+    只保留子元素 → 浏览器会当作 li 是 .card 的直接子元素 */
+}
+
+.card ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card p:hover {
+    color: #ff6700
+}
+
+/* ad end */
+/* 手机start */
+.mobile {
+    width: 1200px;
+    height: 600px;
+    margin: 20px auto;
+}
+
+.mobile h3 {
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+
+.mleft {
+    float: left;
+    width: 185px;
+    height: 580px;
+    margin-right: 20px;
+}
+
+.mright {
+    float: right;
+    width: 950px;
+    height: 580px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.mright ul {
+    display: contents;
+}
+
+.mright li {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.mright p {
+    font-size: 12px;
+
+}
+
+.mright .money {
+    color: #ff6700;
+}
+
+.mright .pintro {
+    color: #b7b2b0;
+
+}
+
+.mleft img {
+    height: 100%;
+}
+
+.mright li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 10px gray;
+}
+
+.tvad {
+    width: 1200px;
+    height: 120px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+
+
+/* 手机end */
+/* 页脚start */
+.endwrap {
+    width: 100%;
+    height: 425px;
+    background-color: #fff;
+}
+
+.end {
+    width: 1200px;
+    height: 425px;
+    margin: 20px auto 0;
+    background-color: #fff;
+}
+
+.endtop {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #c1c1c1;
+    display: flex;
+    align-items: center;
+
+}
+
+.endtop ul {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.endtop ul li {
+    flex: 1;
+}
+
+.endtop ul a {
+    font-size: 16px;
+    color: #c1c1c1;
+}
+
+.endtop span {
+    color: #c1c1c1;
+    margin-top: 10px;
+}
+
+.endbotleft {
+    width: 960px;
+    height: 300px;
+    display: flex;
+    margin-top: 30px;
+    border-right: 1px solid #c1c1c1;
+}
+
+.endbotleft dl {
+    flex: 1;
+}
+
+.endbotleft dt a {
+    color: black;
+}
+
+
+.endbotleft dl dd {
+    font-size: 12px;
+    padding: 4px;
+}
+
+.endbotleft dd a {
+    color: #aaa;
+}
+
+.endbot {
+    display: flex;
+}
+
+.endbotright {
+    width: 230px;
+    height: 300px;
+    margin-top: 30px;
+}
+
+.endbotright h3 {
+    color: #ff6908;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.endbotright p {
+    font-size: 12px;
+    color: #aaa;
+    padding: 5px 0;
+}
+
+.endbotright .kefu {
+    width: 120px;
+    height: 30px;
+    background-color: #fff;
+    display: block;
+    margin-left: 55px;
+    border: 1px solid #ff6908;
+    color: #ff6908;
+    text-align: center;
+    line-height: 30px;
+    transition: all 0.3s;
+}
+
+.endbotright .kefu:hover {
+    background-color: #ff6908;
+    color: #fff;
+}
+
+.end a:hover {
+    color: #ff6908;
+}
+
+/* 页脚end */

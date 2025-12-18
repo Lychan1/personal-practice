@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS 计数器</title>
+  <!-- 简单的 CSS 样式，可以直接写在 head 里 -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    #value {
+      font-size: 80px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #555;
+    }
+
+    /* 增加一些状态颜色类，供 JS 动态添加 */
+    .positive {
+      color: green;
+    }
+
+    .negative {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <h1>计数器</h1>
+    <!-- 核心显示区域：给它一个 ID 方便 JS 获取 -->
+    <span id="value">0</span>
+
+    <div class="btn-container">
+      <!-- 核心交互区域：给按钮加上特定的类名 -->
+      <button class="btn decrease">减少</button>
+      <button class="btn reset">重置</button>
+      <button class="btn increase">增加</button>
+    </div>
+  </main>
+
+  <!-- 下面是 JS 脚本 -->
+  <script>
+    // === JavaScript 代码将写在这里 ===
+    let count = 0;
+    const btns = document.querySelectorAll('.btn')
+    const value = document.querySelector('#value')
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        const styles = e.currentTarget.classList
+        if (styles.contains('increase')) {
+          count++
+        }
+        else if (styles.contains('decrease')) {
+          count--
+        }
+        else {
+          count = 0
+        }
+        if (count > 0) {
+          value.style.color = 'green'
+        }
+        else if (count < 0) {
+          alert('不能小于0')
+          count = 0
+        }
+        else {
+          value.style.color = 'black'
+        }
+        value.innerHTML = count
+      })
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>随机狗狗</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+      font-family: sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    /* 图片样式：限制一下大小，不然有的图太大了 */
+    #dog-img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      /* 让图片不拉伸，保持比例 */
+      border-radius: 10px;
+      background-color: #ddd;
+      /* 图片没加载出来时的灰色背景 */
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>点按钮，吸狗！</h1>
+
+  <!-- 1. 图片标签：给它一个 ID -->
+  <img id="dog-img" src="https://images.dog.ceo/breeds/terrier-american/n02093428_4553.jpg" alt="狗狗图片">
+
+  <!-- 2. 按钮：给它一个 ID -->
+  <button id="btn">换一只</button>
+
+  <script>
+    // === 只有这 3 步，非常清晰 ===
+
+    // 第一步：选中那两个元素
+    const dogImg = document.querySelector("#dog-img");
+    const btn = document.querySelector("#btn");
+
+    // 第二步：定义获取数据的函数
+    async function getNewDog() {
+      // A. 去服务器拿数据 (Fetch)
+      // 这里的 await 就是“等待”服务器回应
+      const response = await fetch("https://dog.ceo/api/breeds/image/random");
+      console.log(response)
+      // B. 把拿到的包裹拆开，变成 JS 对象 (JSON)
+      const data = await response.json();
+
+      // C. 关键点：在控制台看看数据长什么样！(一定要养成这个习惯)
+      console.log("服务器给我的数据是：", data);
+
+      // D. 更新页面
+      // data.message 就是那个图片的网址
+      dogImg.src = data.message;
+    }
+
+    // 第三步：点击按钮，执行上面的函数
+    btn.addEventListener("click", getNewDog);
+
+  </script>
+</body>
+
+</html>

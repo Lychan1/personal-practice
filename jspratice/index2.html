@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>简易轮播图</title>
+  <style>
+    /* 简单美化，居中显示 */
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f1f5f8;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    #person-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #49a6e9;
+    }
+
+    #author {
+      letter-spacing: 2px;
+      margin-bottom: 0.25rem;
+    }
+
+    #job {
+      color: #49a6e9;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    #info {
+      color: #617d98;
+      font-size: 0.875rem;
+    }
+
+    .btn-container {
+      margin-top: 1rem;
+    }
+
+    .prev-btn,
+    .next-btn {
+      color: #49a6e9;
+      font-size: 1.25rem;
+      background: transparent;
+      border-color: transparent;
+      cursor: pointer;
+      margin: 0 0.5rem;
+    }
+
+    .prev-btn:hover,
+    .next-btn:hover {
+      color: #063251;
+    }
+  </style>
+</head>
+
+<body>
+  <article class="card">
+    <!-- 图片 -->
+    <img src="" id="person-img" alt="" />
+    <!-- 姓名 -->
+    <h4 id="author">姓名占位</h4>
+    <!-- 职业 -->
+    <p id="job">职业占位</p>
+    <!-- 详细介绍 -->
+    <p id="info">介绍文字占位...</p>
+
+    <!-- 按钮区域 -->
+    <div class="btn-container">
+      <button class="prev-btn"> &lt; 上一张 </button>
+      <button class="next-btn"> 下一张 &gt; </button>
+    </div>
+  </article>
+
+  <script>
+    // === 假数据：这是一个包含4个对象的数组 ===
+    const reviews = [
+      {
+        id: 1,
+        name: "苏珊·史密斯",
+        job: "WEB 前端开发",
+        img: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+        text: "我是苏珊，我喜欢写代码。这个轮播图项目是学习 JS 对象和数组的好机会。加油！",
+      },
+      {
+        id: 2,
+        name: "安娜·约翰逊",
+        job: "UI 设计师",
+        img: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883409/person-2_np9x5l.jpg",
+        text: "设计的本质是解决问题。好的代码应该像好的设计一样优雅。这一页展示的是第二个人的信息。",
+      },
+      {
+        id: 3,
+        name: "彼得·琼斯",
+        job: "实习生",
+        img: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg",
+        text: "我不久前才开始学习编程，虽然很难，但每次跑通代码都很有成就感。这是第三条数据。",
+      },
+      {
+        id: 4,
+        name: "比尔·安德森",
+        job: "项目经理",
+        img: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg",
+        text: "作为老板，我要确保项目按时交付。你现在的任务就是把这个轮播图功能实现出来！",
+      },
+    ];
+
+    // === 你的 JS 代码将写在这里 ===
+    const img = document.querySelector('#person-img')
+    const name1 = document.querySelector('#author')
+    const job = document.querySelector('#job')
+    const info = document.querySelector('#info')
+    const prev = document.querySelector('.prev-btn')
+    const next = document.querySelector('.next-btn')
+    let countitem = 0
+    function show() {
+      if (!reviews.length) return;
+      if (countitem >= reviews.length) countitem = 0;
+      if (countitem < 0) countitem = reviews.length - 1;
+      img.src = reviews[countitem].img
+      name1.innerHTML = reviews[countitem].name
+      job.innerHTML = reviews[countitem].job
+      info.innerHTML = reviews[countitem].text
+    }
+    document.addEventListener('DOMContentLoaded', show)
+    prev.addEventListener('click', function () {
+      countitem--
+      show()
+    })
+    next.addEventListener('click', function () {
+      countitem++
+      show()
+    })
+
+
+  </script>
+</body>
+
+</html>

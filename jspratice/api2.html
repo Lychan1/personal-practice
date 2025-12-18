@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>宝可梦图鉴</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffde00;
+      /* 皮卡丘黄 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    .poke-img {
+      width: 150px;
+      height: 150px;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      /* 圆形背景 */
+    }
+
+    h2 {
+      margin: 10px 0;
+      text-transform: capitalize;
+      /* 让名字首字母自动大写 */
+    }
+
+    .type {
+      background-color: #3b4cca;
+      /* 宝可梦蓝 */
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #ff0000;
+      /* 精灵球红 */
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px #cc0000;
+    }
+
+    button:active {
+      box-shadow: 0 0 #cc0000;
+      transform: translateY(4px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <!-- 这里的 src 先放个占位图或者空的 -->
+    <img class="poke-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+      alt="Pokemon">
+    <h2 class="poke-name">Pikachu</h2>
+    <span class="type">electric</span>
+  </div>
+
+  <button id="btn">召唤宝可梦！</button>
+
+  <script>
+    // 1. 获取元素
+    const imgEl = document.querySelector(".poke-img");
+    const nameEl = document.querySelector(".poke-name");
+    const typeEl = document.querySelector(".type");
+    const btn = document.querySelector("#btn");
+
+    // 2. 核心函数
+    async function getPokemon() {
+      // A. 生成一个 1 到 150 之间的随机整数 (第一代宝可梦)
+      const id = Math.floor(Math.random() * 150) + 1;
+
+      // B. 拼接 URL (注意要用反引号 ` `)
+      const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+
+      try {
+        // C. 典型的 fetch 流程
+        const response = await fetch(url);
+        const data = await response.json();
+
+        console.log("抓到的数据:", data); // 必做：去控制台看看结构！
+
+        // D. 提取并更新数据
+        // 名字很简单
+        nameEl.textContent = data.name;
+
+        // 图片在 sprites 对象里的 front_default
+        imgEl.src = data.sprites.front_default;
+
+        // 【难点】属性 (type) 藏得比较深
+        // types 是个数组，我们取第 0 个，再拿里面的 type 对象，再拿 name
+        typeEl.textContent = data.types[0].type.name;
+
+      } catch (error) {
+        console.error("宝可梦逃跑了！", error);
+      }
+    }
+
+    // 3. 绑定事件
+    btn.addEventListener("click", getPokemon);
+  </script>
+</body>
+
+</html>
