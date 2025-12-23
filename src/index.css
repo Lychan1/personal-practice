@@ -1,0 +1,11 @@
+/* src/index.css */
+body {
+  margin: 0;
+  width: 100%;
+  /* 恢复默认的文档流，不要用 flex 布局干扰 */
+  display: block;
+}
+
+#root {
+  width: 100%;
+}
